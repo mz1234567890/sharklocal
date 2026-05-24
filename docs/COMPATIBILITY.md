@@ -7,6 +7,7 @@ Visit a model's details page to see the full feature-level compatibility matrix 
 | ------------ | :--: | :--: | -------------------------------------- |
 | `RV2310CGUS` |  ❌  |  ✅  | [Details](compatibility/rv2310cgus.md) |
 | `RV1001AEC`  |  ❌  |  ❌  | [Details](compatibility/rv1001aec.md)  |
+| `UR2500SR`   |  ❌  |  ✅  | [Details](compatibility/ur2500sr.md)   |
 
 > **Adding a new model?**
 > The goal is to identify both supported and known unsupported models. This allows us to track and add new mappings targeted at specific models. Please open a PR with the following changes to contribute to this list.
