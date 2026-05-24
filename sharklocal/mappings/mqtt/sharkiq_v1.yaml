@@ -1,0 +1,42 @@
+id: sharkiq_v1
+description: "SharkIQ vacuum local MQTT protocol"
+transport: mqtt
+connection:
+  port: 1883
+
+topics:
+  command: "/qfeel/PbInput"
+  status: "/qfeel/PbOutput"
+
+# Encoding used for both outbound command payloads and inbound status messages.
+encoding: base64
+
+# Name of the registered decoder function used to parse status payloads.
+status_decoder: sharkiq_protobuf_v1
+
+# Maps protobuf OperatingMode integer values to normalized VacuumMode strings.
+# Reference: sharkiq.proto OperatingMode enum
+modes:
+  6: cleaning
+  7: returning_to_dock
+  13: docking
+  14: docked
+
+actions:
+  start_cleaning:
+    type: command
+    payload: "OgQKAhBLgAEJ"
+
+  stop:
+    type: command
+    payload: "OgQKAhAygAER"
+
+  # go_home issues the same stop-and-return command as stop in this protocol.
+  go_home:
+    type: command
+    payload: "OgQKAhAygAER"
+
+  get_status:
+    type: status_request
+    payload: "QgIIAw=="
+    timeout: 5.0
